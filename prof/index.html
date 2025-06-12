@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-teal-600 to-green-400 min-h-screen flex items-center justify-center">
+
+  <!-- Floating Icon Navigation -->
+  <div class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-gray-900 rounded-full p-3 flex flex-col space-y-4 z-50">
+    <button onclick="showSection('home')"><i class="ph ph-house text-xl text-white hover:text-green-400 transition"></i></button>
+    <button onclick="showSection('about')"><i class="ph ph-user text-xl text-white hover:text-green-400 transition"></i></button>
+    <button><i class="ph ph-graduation-cap text-xl text-white hover:text-green-400 transition"></i></button>
+    <button><i class="ph ph-envelope text-xl text-white hover:text-green-400 transition"></i></button>
+  </div>
+
+  <!-- Left Arrow Button -->
+  <div class="absolute left-10 top-1/2 transform -translate-y-1/2 z-50">
+    <button onclick="prevSection()" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700">
+      <i class="ph ph-caret-left text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Right Arrow Button -->
+  <div class="absolute right-10 bottom-10 z-50">
+    <button onclick="nextSection()" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700">
+      <i class="ph ph-caret-right text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <div class="relative w-[1200px] h-[600px] flex items-center justify-center overflow-hidden">
+    
+    <!-- Home Section -->
+    <div id="home" class="absolute inset-0 transition-all">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+        <!-- Left Panel -->
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-full w-40 h-40 object-cover border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold text-center">Krishna Kaushik</h1>
+          <p class="text-center text-gray-400">Gen ai Engineer</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+          <button class="mt-4 px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="w-[800px] flex items-center justify-center">
+          <div>
+            <h1 class="text-5xl font-bold">Krishna Kaushik</h1>
+            <p class="mt-4 text-xl text-gray-400">Platform Engineer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="absolute inset-0 hidden">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+        <!-- Left Panel -->
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-full w-40 h-40 object-cover border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold text-center">Krishna Kaushik</h1>
+          <p class="text-center text-gray-400">AWS DevOps Engineer</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+          <button class="mt-4 px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="w-[800px] p-10 flex items-center justify-center">
+          <div>
+            <h2 class="text-3xl font-bold mb-4 text-green-400">About <span class="text-white">Me</span></h2>
+            <p class="text-gray-300 text-lg leading-relaxed">
+              I'm a Senior AWS DevOps Engineer based in Dallas, TX. With over 7 years of experience, I specialize in building and optimizing deployment pipelines and cloud infrastructures.
+              My technical expertise includes AWS services, CI/CD pipelines, and Infrastructure as Code (IaC).<br /><br />
+              I'm passionate about leveraging automation to improve efficiency and reliability in software development processes.
+              Outside of work, I enjoy staying updated with the latest tech trends and enhancing my skills through continuous learning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
