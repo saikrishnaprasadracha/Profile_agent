@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Profile UI</title>
+  <title>Krishna Kaushik - Gen AI Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gradient-to-br from-teal-600 to-green-400 min-h-screen flex items-center justify-center">
 
   <!-- Floating Icon Navigation -->
-  <div class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-gray-900 rounded-full p-3 flex flex-col space-y-4 z-50">
-    <button onclick="showSection('home')"><i class="ph ph-house text-xl text-white hover:text-green-400 transition"></i></button>
-    <button onclick="showSection('about')"><i class="ph ph-user text-xl text-white hover:text-green-400 transition"></i></button>
-    <button><i class="ph ph-graduation-cap text-xl text-white hover:text-green-400 transition"></i></button>
-    <button><i class="ph ph-envelope text-xl text-white hover:text-green-400 transition"></i></button>
+  <div class="absolute top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 px-6 py-3 rounded-full flex space-x-8 z-50 shadow-lg">
+    <button onclick="showSection('home')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-house text-xl"></i><span class="text-sm font-medium">Home</span>
+    </button>
+    <button onclick="showSection('about')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-user text-xl"></i><span class="text-sm font-medium">About</span>
+    </button>
+    <button onclick="showSection('education')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-graduation-cap text-xl"></i><span class="text-sm font-medium">Education</span>
+    </button>
+    <button onclick="showSection('projects')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-code text-xl"></i><span class="text-sm font-medium">Projects</span>
+    </button>
+    <button onclick="showSection('certifications')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-certificate text-xl"></i><span class="text-sm font-medium">Certifications</span>
+    </button>
+    <button onclick="showSection('contact')" class="flex items-center space-x-2 text-white hover:text-green-400 transition">
+      <i class="ph ph-envelope text-xl"></i><span class="text-sm font-medium">Contact</span>
+    </button>
   </div>
 
   <!-- Left Arrow Button -->
@@ -34,64 +47,203 @@
 
   <!-- Main Container -->
   <div class="relative w-[1200px] h-[600px] flex items-center justify-center overflow-hidden">
-    
+
     <!-- Home Section -->
     <div id="home" class="absolute inset-0 transition-all">
       <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
-        <!-- Left Panel -->
         <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
-          <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-full w-40 h-40 object-cover border-4 border-white shadow-md" />
-          <h1 class="text-3xl font-bold text-center">Krishna Kaushik</h1>
-          <p class="text-center text-gray-400">Gen ai Engineer</p>
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">Gen AI Developer</p>
           <div class="flex space-x-4">
             <i class="ph ph-linkedin-logo text-2xl"></i>
             <i class="ph ph-github-logo text-2xl"></i>
             <i class="ph ph-twitter-logo text-2xl"></i>
           </div>
-          <button class="mt-4 px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
+          <button class="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
         </div>
 
-        <!-- Right Panel -->
-        <div class="w-[800px] flex items-center justify-center">
-          <div>
-            <h1 class="text-5xl font-bold">Krishna Kaushik</h1>
-            <p class="mt-4 text-xl text-gray-400">Platform Engineer</p>
+
+
+
+        <div class="w-[800px] flex flex-col items-center justify-center text-center p-10">
+          <h1 class="text-5xl font-bold">Krishna Kaushik</h1>
+          <p class="mt-4 text-xl text-gray-400">Platform Engineer</p>
+
+          <!-- Ask About Me Input Bar -->
+          <div class="mt-10 w-[80%]">
+            <label class="block text-lg text-gray-300 mb-2">Ask about me:</label>
+            <div class="flex items-center bg-gray-800 border border-gray-600 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-green-400">
+              <input
+                id="chatInput"
+                type="text"
+                placeholder="What would you like to know?"
+                class="flex-grow bg-transparent text-white focus:outline-none placeholder-gray-500"
+              />
+              <button onclick="sendMessage()" class="ml-2 text-green-400 hover:text-green-300 transition">
+                <i class="ph ph-paper-plane-right text-2xl"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Chat Output Box -->
+          <div id="chatOutput" class="mt-6 w-[80%] bg-gray-800 border border-gray-600 text-white rounded-xl p-4 text-left">
+            <p class="text-gray-400 italic">No messages yet.</p>
           </div>
         </div>
+
+
+
+
       </div>
     </div>
 
     <!-- About Section -->
     <div id="about" class="absolute inset-0 hidden">
       <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
-        <!-- Left Panel -->
         <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
-          <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-full w-40 h-40 object-cover border-4 border-white shadow-md" />
-          <h1 class="text-3xl font-bold text-center">Krishna Kaushik</h1>
-          <p class="text-center text-gray-400">AWS DevOps Engineer</p>
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">AWS DevOps Engineer</p>
           <div class="flex space-x-4">
             <i class="ph ph-linkedin-logo text-2xl"></i>
             <i class="ph ph-github-logo text-2xl"></i>
             <i class="ph ph-twitter-logo text-2xl"></i>
           </div>
-          <button class="mt-4 px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
+          <button class="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-gray-900 transition">Download CV</button>
         </div>
-
-        <!-- Right Panel -->
         <div class="w-[800px] p-10 flex items-center justify-center">
           <div>
             <h2 class="text-3xl font-bold mb-4 text-green-400">About <span class="text-white">Me</span></h2>
             <p class="text-gray-300 text-lg leading-relaxed">
-              I'm a Senior AWS DevOps Engineer based in Dallas, TX. With over 7 years of experience, I specialize in building and optimizing deployment pipelines and cloud infrastructures.
-              My technical expertise includes AWS services, CI/CD pipelines, and Infrastructure as Code (IaC).<br /><br />
-              I'm passionate about leveraging automation to improve efficiency and reliability in software development processes.
-              Outside of work, I enjoy staying updated with the latest tech trends and enhancing my skills through continuous learning.
+              I'm a Senior AWS DevOps Engineer based in Dallas, TX. With over 7 years of experience, I specialize in building and optimizing deployment pipelines and cloud infrastructures.<br><br>
+              My technical expertise includes AWS services, CI/CD pipelines, and Infrastructure as Code (IaC). I'm passionate about leveraging automation to improve efficiency and reliability.
             </p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Education Section -->
+    <div id="education" class="absolute inset-0 hidden">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">Education Journey</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+        </div>
+        <div class="w-[800px] p-10 flex flex-col justify-center">
+          <h2 class="text-3xl font-bold mb-4 text-green-400">Education</h2>
+          <ul class="space-y-4 text-lg text-gray-300">
+            <li>🎓 <strong>B.Tech in Computer Science</strong><br/>NIT Warangal – 2016–2020</li>
+            <li>📘 <strong>Intermediate</strong><br/>Narayana Junior College – 2014–2016</li>
+            <li>🏫 <strong>High School</strong><br/>Delhi Public School – 2013–2014</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="absolute inset-0 hidden">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">Project Gallery</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+        </div>
+        <div class="w-[800px] p-10 overflow-y-auto">
+          <h2 class="text-3xl font-bold mb-6 text-green-400">Projects</h2>
+          <div class="space-y-6 pr-4">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">AI Resume Generator</h3>
+              <p class="text-gray-300 mt-2">Built a tool that crafts tailored resumes using LLMs with Tailwind UI.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">Slack DevOps Bot</h3>
+              <p class="text-gray-300 mt-2">Bot to monitor deployment logs & notify via Slack using AWS + Python.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">Personal Portfolio</h3>
+              <p class="text-gray-300 mt-2">This multi-section portfolio built with Tailwind CSS and HTML.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">LLM Chatbot</h3>
+              <p class="text-gray-300 mt-2">Built a LangChain + Groq-powered chatbot over private documents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div id="certifications" class="absolute inset-0 hidden">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">Certifications</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+        </div>
+        <div class="w-[800px] p-10 overflow-y-auto">
+          <h2 class="text-3xl font-bold mb-6 text-green-400">Certifications</h2>
+          <div class="space-y-6 pr-4">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">AWS Solutions Architect – Associate</h3>
+              <p class="text-gray-300 mt-2">Issued by AWS in 2023. Focused on cloud architecture and best practices.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">Google Cloud DevOps Engineer</h3>
+              <p class="text-gray-300 mt-2">CI/CD, reliability, and monitoring, earned in 2022.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-bold">Docker & Kubernetes</h3>
+              <p class="text-gray-300 mt-2">Udemy Certification, covering containerization and orchestration hands-on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Section -->
+    <div id="contact" class="absolute inset-0 hidden">
+      <div class="flex w-full h-full bg-gray-900 text-white rounded-3xl overflow-hidden shadow-2xl">
+    
+        <!-- Left Panel -->
+        <div class="bg-gray-800 w-[400px] flex flex-col items-center justify-center p-6 space-y-6">
+          <img src="https://via.placeholder.com/150" class="rounded-full w-40 h-40 border-4 border-white shadow-md" />
+          <h1 class="text-3xl font-bold">Krishna Kaushik</h1>
+          <p class="text-gray-400">Let's Connect</p>
+          <div class="flex space-x-4">
+            <i class="ph ph-linkedin-logo text-2xl"></i>
+            <i class="ph ph-github-logo text-2xl"></i>
+            <i class="ph ph-twitter-logo text-2xl"></i>
+          </div>
+        </div>
+    
+        <!-- Right Contact Form Panel -->
+        <div class="w-[800px] p-10 flex flex-col justify-center">
+          <h2 class="text-3xl font-bold mb-6 text-green-400">Contact <span class="text-white">Me</span></h2>
+          <form class="space-y-6">
+            <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-400" />
+            <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-400" />
+            <textarea rows="5" placeholder="Your Message" class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
