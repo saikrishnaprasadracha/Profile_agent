@@ -1,34 +1,57 @@
-const sectionIds = ['home', 'about']; // Extend as needed
-let currentIndex = 0;
+// Define the list of section IDs in the order of appearance
+const sections = ['home', 'about', 'education', 'projects', 'certifications', 'contact'];
 
+// Keep track of the current section index
+let currentSectionIndex = 0;
+
+// Show the specified section and hide all others
 function showSection(sectionId) {
-  sectionIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('hidden');
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.classList.add('hidden');
+    }
   });
 
-  const target = document.getElementById(sectionId);
-  if (target) {
-    target.classList.remove('hidden');
-    target.classList.add('fade-enter');
-    setTimeout(() => {
-      target.classList.add('fade-enter-active');
-    }, 10);
-    setTimeout(() => {
-      target.classList.remove('fade-enter');
-      target.classList.remove('fade-enter-active');
-    }, 400);
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.classList.remove('hidden');
+    currentSectionIndex = sections.indexOf(sectionId);
   }
 }
 
+// Navigate to the next section in the list
 function nextSection() {
-  currentIndex = (currentIndex + 1) % sectionIds.length;
-  showSection(sectionIds[currentIndex]);
+  currentSectionIndex = (currentSectionIndex + 1) % sections.length;
+  showSection(sections[currentSectionIndex]);
 }
 
+// Navigate to the previous section in the list
 function prevSection() {
-  currentIndex = (currentIndex - 1 + sectionIds.length) % sectionIds.length;
-  showSection(sectionIds[currentIndex]);
+  currentSectionIndex = (currentSectionIndex - 1 + sections.length) % sections.length;
+  showSection(sections[currentSectionIndex]);
 }
 
-showSection(sectionIds[currentIndex]);
+// Send message in "Ask about me" bar
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const output = document.getElementById("chatOutput");
+
+  const userMessage = input.value.trim();
+  if (!userMessage) return;
+
+  // Simulated chatbot response
+  const botReply = `You said: ${userMessage}`;
+
+  output.innerHTML = `
+    <div class="mb-2"><strong class="text-green-400">You:</strong> ${userMessage}</div>
+    <div><strong class="text-green-300">Bot:</strong> ${botReply}</div>
+  `;
+
+  input.value = "";
+}
+
+// Initialize the first visible section on page load
+window.onload = () => {
+  showSection('home');
+};
